@@ -1,0 +1,52 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: thinking-realms-backend
+
+  # ---------------------------------------------------------------------
+  # DEFAULT: in-memory H2, so the project runs with zero setup.
+  # ---------------------------------------------------------------------
+  # datasource:
+  #   url: jdbc:h2:mem:thinkingrealms;DB_CLOSE_DELAY=-1;MODE=PostgreSQL
+  #   driver-class-name: org.h2.Driver
+  #   username: sa
+  #   password: ""
+
+  # ---------------------------------------------------------------------
+  # TO CONNECT TO SUPABASE POSTGRES INSTEAD:
+  # Comment out the H2 block above and uncomment below, then set the
+  # SUPABASE_DB_URL / SUPABASE_DB_USER / SUPABASE_DB_PASSWORD env vars
+  # (Project Settings -> Database -> Connection string in Supabase).
+  # ---------------------------------------------------------------------
+  datasource:
+     url: ${SUPABASE_DB_URL}
+    #  username: ${SUPABASE_DB_USER}
+    #  password: ${SUPABASE_DB_PASSWORD}
+     driver-class-name: org.postgresql.Driver
+
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: true
+    open-in-view: false
+
+app:
+  jwt:
+    secret: ${JWT_SECRET}
+    expiration-ms: 86400000 # 24h
+  cors:
+    allowed-origins: ${CORS_ORIGINS:http://localhost:5173}
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html

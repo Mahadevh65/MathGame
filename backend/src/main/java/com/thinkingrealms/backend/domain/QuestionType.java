@@ -1,0 +1,15 @@
+package com.thinkingrealms.backend.domain;
+
+public enum QuestionType {
+    STANDARD_CALCULATION,
+    PATTERN_RECOGNITION,
+    FIND_THE_MISTAKE,
+    MULTIPLE_SOLUTION,
+    ESTIMATION,
+    STRATEGY_SELECTION,
+    WHAT_IF,
+    EXPLAIN_REASONING,
+    REAL_WORLD,
+    CONSTRAINT,
+    UNFAMILIAR_TRANSFER
+}
